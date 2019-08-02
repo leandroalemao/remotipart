@@ -34,7 +34,7 @@ module Remotipart
 
     def treat_render_for_remotipart(render_return_value)
       if remotipart_submitted?
-        response.body = %{<script type="text/javascript">try{window.parent.document;}catch(err){document.domain=document.domain;}</script><textarea data-type="#{response.content_type}" data-status="#{response.response_code}" data-statusText="#{response.message}"></textarea><script type="text/javascript">document.querySelector("textarea").value="#{escape_javascript(response.body)}";</script>}
+        response.body = escape_javascript(response_body)
         response.content_type = ::Rails.version >= '5' ? Mime[:html] : Mime::HTML
         response_body
       else
