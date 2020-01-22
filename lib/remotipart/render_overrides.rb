@@ -34,8 +34,8 @@ module Remotipart
 
     def treat_render_for_remotipart(render_return_value)
       if remotipart_submitted?
-        response.body = escape_javascript(response_body)
-        response.content_type = ::Rails.version >= '5' ? Mime[:html] : Mime::HTML
+        # response.body = escape_javascript(response_body)
+        # response.content_type = ::Rails.version >= '5' ? Mime[:html] : Mime::HTML
         response_body
       else
         render_return_value
